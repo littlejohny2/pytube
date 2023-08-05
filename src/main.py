@@ -6,7 +6,7 @@ from pytube import Playlist
 from pytube.cli import on_progress
 
 
-outputPath = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'out')
+outputPath = 'out'
 
 
 
