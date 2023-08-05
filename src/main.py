@@ -77,6 +77,35 @@ def playlist(userInput: str):
     main()
 
 
+def clean(userInput: str):
+    command = userInput.split()
+    
+    for args in command[1:]:
+        if args == '-y' or args == '-yes': # -yes option bypasses prompt
+            for files in os.listdir(outputPath):
+                print(f' removing {files}')
+                os.remove(os.path.join(outputPath, files))
+
+            print(f'{outputPath} cleaned')
+
+            return main()
+
+    yesNoInput = input('are you sure you want to delete all files in the out directory? [y/N]')
+
+    if yesNoInput == 'y' or yesNoInput == 'Y' or yesNoInput == 'yes' or yesNoInput == 'YES':
+        for files in os.listdir(outputPath):
+            print(f' removing {files}')
+            os.remove(os.path.join(outputPath, files))
+
+        print(f'{outputPath} cleaned')
+
+        return main()
+    else:
+
+        return main()
+
+
+
 def clear():
     os.system('cls')
 
@@ -92,13 +121,15 @@ def unknown(userInput: str):
 def help():
     print('\n')
     print('------------')
-    print (' help page ')
+    print('  help page ')
     print('------------')
     print('\n')
     print(' ex: <command> (params) [options]')
     print('     download https://www.youtube.com/watch?v=5X3TXa8TMgo -audio')
     print('\n')
     print(' help                              : Displays a list of commands, their parameters and purpose.')
+    print(' clean [-yes]                      : Deletes all files found in the output directory.')
+    print('       -yes   : Bypasses y/N prompt with yes')
     print(' download (URL) [-audio] [-highres]: Downloads video through given URL')
     print('       -audio   : Downloads only audio')
     print('       -highres : Downloads highest resolution available')
@@ -122,6 +153,8 @@ def main():
         download(userInput)
     elif userInput.startswith('playlist'):
         playlist(userInput)
+    elif userInput.startswith('clean'):
+        clean(userInput)
     elif userInput.startswith('help'):
         help()
     elif userInput.startswith('clear') | userInput.startswith('cls'):
