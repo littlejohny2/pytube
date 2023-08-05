@@ -1,3 +1,3 @@
 # pytube
 
-download dist.zip
+download dist.zip in releases
