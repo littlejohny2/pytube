@@ -32,7 +32,7 @@ def download(userInput: str):
         else:
             youtubeURL.streams.get_by_itag(22).download(outputPath)
 
-    print(f'{youtubeURL.title} downloaded to {os.path.abspath(outputPath)}')
+    print(f'\n{youtubeURL.title} downloaded to {os.path.abspath(outputPath)}')
 
     main()
 
@@ -57,7 +57,7 @@ def help():
     print(' ex: <command> (params) [options]')
     print('     download https://www.youtube.com/watch?v=5X3TXa8TMgo -audio')
     print('\n')
-    print(' help                    : Displays a list of commands, their parameters and purpose.')
+    print(' help                              : Displays a list of commands, their parameters and purpose.')
     print(' download (URL) [-audio] [-highres]: Downloads video through given URL')
     print('       -audio   : Downloads only audio')
     print('       -highres : Downloads highest resolution available')
